@@ -12,22 +12,19 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="/WEB-INF/props/jdbc.properties"/>
+        <property name="fileEncoding" value="UTF-8" />
+    </bean>
+
 	<!-- mysql -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver">
-			<!-- mysql 6버전 부터 cj 폴더 생성. 5버전 이상은 com.mysql.cj.jdbc.Driver로 연결 -->
-		</property>
-		<property name="url">
-			<value>jdbc:mysql://127.0.0.1:3306/winndb?useSSL=false&amp;serverTimezone=Asia/Seoul
-			</value>
-		</property>
-		<property name="username">
-			<value>root</value>
-		</property>
-		<property name="password">
-			<value>Fnxm!@qlqjs4</value>
-		</property>
+		<property name="driverClassName" value="${jdbc.driverClassName}"/>
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
 	</bean>
 
 	<!-- MyBatis -->
