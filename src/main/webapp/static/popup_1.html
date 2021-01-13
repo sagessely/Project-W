@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>단체 회선 문의</title>
+<link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.css">
+<script>
+	function notice_setCookie(name, value, expiredays) {
+		var todayDate = new Date();
+		todayDate.setDate(todayDate.getDate() + expiredays);
+		document.cookie = name + "=" + escape(value) + "; path=/; expires="
+				+ todayDate.toGMTString() + ";"
+	}
+
+	function notice_closeWin() {
+		if (document.forms[0].Notice.checked)
+			notice_setCookie("Notice", "done", 1); // 1=하룻동안 공지창 열지 않음
+		self.close();
+	}
+
+	function na_call(str) {
+		eval(str);
+	}
+</script>
+
+</head>
+<body>
+	<table>
+		<tr>
+			<td><img src='/resources/img/main/popup_1.png' class="img-fluid"></td>
+		</tr>
+		<tr>
+			<td align="right">
+				<form name="form1">
+					<input type="checkbox" name="Notice" onclick="notice_closeWin();">
+					하루동안 이 창 보이지 않기
+				</form>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
